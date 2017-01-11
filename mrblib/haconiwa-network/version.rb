@@ -1,0 +1,3 @@
+module HaconiwaNetwork
+  VERSION = "0.0.1"
+end
