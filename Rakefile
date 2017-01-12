@@ -3,9 +3,10 @@ require 'fileutils'
 MRUBY_VERSION="1.2.0"
 
 file :mruby do
-  #sh "git clone --depth=1 https://github.com/mruby/mruby"
-  sh "curl -L --fail --retry 3 --retry-delay 1 https://github.com/mruby/mruby/archive/#{MRUBY_VERSION}.tar.gz -s -o - | tar zxf -"
-  FileUtils.mv("mruby-#{MRUBY_VERSION}", "mruby")
+  # We use mruby HEAD
+  sh "git clone --depth=1 https://github.com/mruby/mruby"
+  # sh "curl -L --fail --retry 3 --retry-delay 1 https://github.com/mruby/mruby/archive/#{MRUBY_VERSION}.tar.gz -s -o - | tar zxf -"
+  # FileUtils.mv("mruby-#{MRUBY_VERSION}", "mruby")
 end
 
 APP_NAME=ENV["APP_NAME"] || "haconiwa-network"
