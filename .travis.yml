@@ -1,0 +1,17 @@
+sudo: required
+env:
+  DOCKER_COMPOSE_VERSION: 1.4.2
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+services:
+  - docker
+
+script:
+  - docker-compose run compile
+
+notifications:
+  slack:
+    secure: ucP7LWcktIq2AvgJ1MvnsWidwe0I2TVglChubXexJH8OAxIo1tTN4DUJveZdier4mLP/0rzNmyE46cHbp4OiZMEuRGIVuN66HpxrQUfx4QDtILzJEyqdUMD1pTpnJj/4kYC1OBUa0KK/xC+LZZPKVbsAwYhzBMLzBwQi/lylQP1vT97j8+w+xE7G22p6A9cvNzUUmi6uSuclNnWX8itBONkrUKaA/nqTkIRePwFeu46QuKn7YMrBPeemjUejisqYuhDgC0ORJIzeYtEkAYUxD8VM4ImE6d+GJld0A91n/AfhEEk2utq8MxCM8vBwKPbm44bf0mWKg9bdYRUSNUMlcyGASVrpGEVH12onkuOmmY41deheyLBW6L1eoLQe6DCKg0weJ5GrRqbOfBEFDC4qh9Z0nvriZLmwdSugjBoIzHFSEf90MxYBw/fiPlBfpizHuukno7D/O2Zi/tS9egj9cat+FlKgno6POf1v0ZBjxwVvh+ckqd+giP+Co17rYXv+KGCEn9yMkFbeGv5/BX29LlUa/CT5KCDh9oN7L2pl0idGVCeWT2od/O/zy1ZPeDrBqpejBWV5CciRz88OpmGOyvlB6IsjixM6kkaZogfuHTyteeBM9YC//L3fPyVsVmrmZg1zsTyukefG6w/6vy5I/Xu3kkU/l8noLI3NxTpgTr8=
